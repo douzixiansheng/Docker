@@ -1,0 +1,29 @@
+# Compose 模板文件
+# 默认的模板文件名称为 docker-compose.yml  格式为YMAL格式
+# 注意每个服务都必须通过image指令指定镜像或build等来自动构建生成镜像
+
+# volumes 数据卷所挂在路径设置。可以设置宿主机路径或加上访问模式
+
+# environment 设置环境变量。可以使用数组或字典两种格式
+
+version: '2'
+services:
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - "2181:2181"
+  kafka:
+    image: wurstmeister/kafka
+    volumes: 
+        - /etc/localtime:/etc/localtime
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.1.225
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+  kafka-manager:  
+    image: sheepkiller/kafka-manager
+    environment:
+        ZK_HOSTS: 192.168.1.225
+    ports:  
+      - "9000:9000"

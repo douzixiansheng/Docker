@@ -1,0 +1,17 @@
+redis:
+        image: "redis"
+        container_name: global_redis
+        command: redis-server /home/software/redis-4.0.8/etc/redis.conf
+        ports:
+                - "6379:6379"
+        volumes:
+                - ./data:/data
+                - ./redis.conf:/home/software/redis-4.0.8/etc/redis.conf
+
+
+# images 代表镜像的名称
+# container_name 代表生成的容器名称
+# command 代表生成容器后要执行的命令
+# ports 将容器内的端口映射到容器外
+# volumes 代表共享目录或文件,冒号前为宿主机目录，冒号后卫容器内目录
+# - ./data:/data 意为将目录共享到容器内的 /data目录，相当于一个软连接

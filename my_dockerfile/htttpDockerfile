@@ -1,0 +1,13 @@
+FROM node:10.16.0-alpine
+
+WORKDIR /test
+
+COPY app /test
+
+RUN cd /test && npm install && cd ..
+
+EXPOSE 8080
+
+ENV NAME httpServer
+
+CMD ["node","app.js"]

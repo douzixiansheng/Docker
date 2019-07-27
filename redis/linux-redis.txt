@@ -1,0 +1,10 @@
+在linux上使用docker-compose 启动redis
+
+1.拉取redis镜像  docker pull redis
+2.查看镜像       docker images
+3.编写docker-compose.yml
+4.执行docker-compose up -d 即可在Docker中生成一个Redis容器
+5.使用docker container ls  查看当前的所有容器,内容如下
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+b2c9ed782bd4        redis               "docker-entrypoint.s…"   14 minutes ago      Up 13 minutes       0.0.0.0:6379->6379/tcp   global_redis
+6.docker container stop <容器ID> 停止当前执行的容器
