@@ -19,6 +19,9 @@ Docker basic learning
 
 - 容器本质上是进程,如nginx镜像，通过镜像启动一个nginx容器，其实就是在主机上启动一个nginx进程
 
+- Docker images：它是一个可执行文件，包含了运行一个应用程序的操作系统配置和所有的库。它有多层叠在一起，并表示为单个对象。docker images 是通过docker file 来创建的
+- Docker Container: 它是docker image 的一个运行实例。同一个docker image 可以有多个运行的container.
+
 
 - 查看docker版本
 ```

@@ -1,0 +1,37 @@
+> Docker File
+- Dockerfile 是由一系列命令和参数构成的脚本，一个Dockerfile里面包含了构建整个images的完整命令
+Docker 通过docker build 执行Dockerfile 中的一系列命令自动构建images。
+
+- 1.编写Dockerfile文件
+- 2.构建镜像
+    ```
+    docker build -f my_dockerfile/httpDockerfile -t httpServer .
+    
+    -t 用来为我们的镜像指定一个名字
+    . 是用来指明docker file 的路径
+    ```
+- 3.查看镜像
+    ```
+    docker images
+    ```
+- 4.执行 sh httServer-start.sh 即可生成
+
+
+
+- FROM <image> FROM指令为后续指令设置Base Image，FROM必须作为其第一条指令,当镜像没有指定标签时，将默认使用latest标签。因此，FROM ubuntu 指令等同于 FROM ubuntu:latest.当镜像更新时，latest标签会指向不同的镜像，这时构建镜像有可能失败,择合适的基础镜像(alpine 版本最好)
+- FROM node:10.16.0-alpine
+
+- WORKDIR 指令可以设置默认目录，也就是运行 RUN/CMD/ENTRYPOINT 指令的地方
+- WORKDIR /test
+
+-  COPY <src>...<dest>
+- COPY app /test
+
+- RUN cd /test && npm install && cd ..
+
+- EXPOSE 8080
+
+- ENV NAME httpServer
+
+- CMD 指令可以设置容器创建时执行的默认命令
+- CMD ["node","app.js"]
