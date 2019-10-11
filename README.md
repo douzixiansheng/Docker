@@ -95,10 +95,20 @@ docker iamges ls redis
 docker run  把镜像创建成容器
 
 -d  把镜像创建成容器之后，把进程启动到后台，这个进程就相当于一直进行，容器的状态也一直是up的
+    容器是否会长久运行，是和 docker run 指定的命令相关，和 `-d` 参数无关
+    使用 -d 参数启动后返回一个唯一的id，也可以通过docker container ls 命令来查看容器信息
+
 -p  进行端口验证的时候,前面所以机子端口，后面是容器服务的端口
 --restart=always  如果容器有异常只会重新启动一次
 --name registry  创建这个容器的时候，起个名字，叫registry
 -t 为容器重新分配一个伪输入终端
+```
+
+```
+docker container logs [container ID or NAMES]  获取容器的输出信息
+docker container stop  终止一个运行中的容器
+docker container start 启动处于终止状态的容器
+docker container ls -a  查看容器包括终止状态的容器
 ```
 
 
